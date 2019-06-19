@@ -243,7 +243,8 @@ select count(*) from posts limit 10;
 - sqoop import with hive direct
 - training 계정으로 리눅스 로그인 
 sqoop import --connect jdbc:mysql://172.31.4.133/test --username training --password training --table authors --target-dir /authors --hive-import --create-hive-table --hive-table default.authors
-sqoop import --connect jdbc:mysql://localhost/test --username training --password training --table posts --target-dir /posts --hive-import --create-hive-table --hive-table default.posts
+>>>>>3. Extract tables authors and posts from the databases and create hive tables.PNG
+sqoop import --connect jdbc:mysql:/172.31.4.133/test --username training --password training --table posts --target-dir /posts --hive-import --create-hive-table --hive-table default.posts
 ```
 
 ## 4. Create and run a Hive/Impala Query. From the query, generate the results dataset that you will use in the next step to export in MySql.
