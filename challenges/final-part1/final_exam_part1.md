@@ -256,13 +256,14 @@ insert overwrite directory '/results'
 row format delimited fields terminated by '\t'
 select A.id,
        A.first_name AS fname,
-       A.last_name AS lname
+       A.last_name AS lname,
        B.num_posts AS num_posts
   from authors A
  inner join ( select author_id, count(author_id) AS num_posts
                 from posts P
                group by author_id ) B
     on A.id = B.author_id
+ >>>>> 4. Create and run a Hive/Impala Query.PNG
 ```
 ## 5. Export the data from above query to MySql
 ```
