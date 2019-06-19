@@ -23,7 +23,7 @@
 	$ sudo groupadd skcc
 	$ sudo usermod -a -G skcc training
 
->>>> 1.a.linux setup - add user.PNG	
+>>>>> 1.a.linux setup - add user.PNG	
 
 - Create a password for user “centos” (All nodes)
 	$ sudo passwd centos
@@ -47,7 +47,7 @@
   $ getent group skcc
   $ getent passwd training
 
->>>> 1.a.linux setup - commands.PNG	  
+>>>>> 1.a.linux setup - commands.PNG	  
   
 
 - Configure the repository for CM 5.15.2
@@ -158,7 +158,7 @@ EXIT;
   FLUSH PRIVILEGES;
   EXIT;
   
->>>>>>>>>  1.b.Install a MySQL server - db training user setting.PNG	
+>>>>>  1.b.Install a MySQL server - db training user setting.PNG	
 
 - Setup the CM database
   $ sudo /usr/share/cmf/schema/scm_prepare_database.sh mysql scm scm password
@@ -174,28 +174,28 @@ EXIT;
 - prepare to install the cluster through the CM GUI installation process
 	http://13.124.2.159:7180/cmf/login  admin / admin
 
->>>>>> 1.c.Install Cloudera Manager - CM GUI~7.PNG
+>>>>> 1.c.Install Cloudera Manager - CM GUI~7.PNG
 
 -	host 명 등록
 	nd1.com,	nd2.com,	nd3.com,	nd4.com,	nd5.com
 
->>>>>>> 1.c.Install Cloudera Manager - CM GUI-Main.PNG
+>>>>> 1.c.Install Cloudera Manager - CM GUI-Main.PNG
 
 - parcel(package) 에서 Kafka 패키지 "다운로드" -> "배포" -> "활성" 수행  
   cluster 메뉴에서 Kafka 서비스 추가
   -> 브로커는 데이터노드에, 게이트웨이는 전체 노드에
   
->>>>>>>   1.c.Install Cloudera Manager - CM GUI-KAFKA.PNG
+>>>>>   1.c.Install Cloudera Manager - CM GUI-KAFKA.PNG
 
 - sqoop
 cluster 메뉴에서 sqoop 1 client 서비스 추가
 
->>>>>>>   1.c.Install Cloudera Manager - CM GUI-sqoop.PNG
+>>>>>   1.c.Install Cloudera Manager - CM GUI-sqoop.PNG
 
 - Spark
 cluster 메뉴에서 Spark 서비스 추가
 role 설정후 마직막에 클러스터 재구성 및 재시작 수행
->>>>>>>   1.c.Install Cloudera Manager - CM GUI-Spark.PNG
+>>>>>   1.c.Install Cloudera Manager - CM GUI-Spark.PNG
 
 ```
 
@@ -214,6 +214,7 @@ EXIT;
   $ mysql -u root -p test < ./posts.sql
 
 >>>>> 2.Database,테이블 및 데이터 생성.PNG
+
 -- 권한 부여
   $ mysql -u root -p
 GRANT ALL ON test.* TO 'training'@'%' IDENTIFIED BY 'training';
@@ -241,9 +242,8 @@ select count(*) from posts limit 10;
 ```
 - sqoop import with hive direct
 - training 계정으로 리눅스 로그인 
-
-sqoop import --connect jdbc:mysql://13.124.2.159/test --username training --password training --table authors --target-dir /user/training/authors --hive-import --create-hive-table --hive-table default.authors
-sqoop import --connect jdbc:mysql://localhost/test --username training --password training --table posts --target-dir /user/training/posts --hive-import --create-hive-table --hive-table default.posts
+sqoop import --connect jdbc:mysql://localhost/test --username training --password training --table authors --target-dir /authors --hive-import --create-hive-table --hive-table default.authors
+sqoop import --connect jdbc:mysql://localhost/test --username training --password training --table posts --target-dir /posts --hive-import --create-hive-table --hive-table default.posts
 ```
 
 ## 4. Create and run a Hive/Impala Query. From the query, generate the results dataset that you will use in the next step to export in MySql.
