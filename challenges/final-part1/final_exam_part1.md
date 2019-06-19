@@ -263,7 +263,8 @@ select A.id,
                 from posts P
                group by author_id ) B
     on A.id = B.author_id
- >>>>> 4. Create and run a Hive/Impala Query.PNG
+ >>>>> 4. Create and run a HiveImpala Query.PNG
+ >>>>> 4.Create and run a HiveImpala Query-results.PNG
 ```
 ## 5. Export the data from above query to MySql
 ```
