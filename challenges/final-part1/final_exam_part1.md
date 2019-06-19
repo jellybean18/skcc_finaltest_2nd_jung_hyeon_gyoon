@@ -242,7 +242,7 @@ select count(*) from posts limit 10;
 ```
 - sqoop import with hive direct
 - training 계정으로 리눅스 로그인 
-sqoop import --connect jdbc:mysql://localhost/test --username training --password training --table authors --target-dir /authors --hive-import --create-hive-table --hive-table default.authors
+sqoop import --connect jdbc:mysql://172.31.4.133/test --username training --password training --table authors --target-dir /authors --hive-import --create-hive-table --hive-table default.authors
 sqoop import --connect jdbc:mysql://localhost/test --username training --password training --table posts --target-dir /posts --hive-import --create-hive-table --hive-table default.posts
 ```
 
